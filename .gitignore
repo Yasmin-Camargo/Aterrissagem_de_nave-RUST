@@ -1,0 +1,27 @@
+# Arquivos e diretórios gerados pelo Rust e Cargo
+target/
+Cargo.lock
+
+# Arquivos de configuração locais
+.rustfmt.toml
+.rustfmt.toml.orig
+
+# Logs e saída de compilação
+*.log
+target/debug/
+target/release/
+
+# Arquivos e diretórios do ambiente de desenvolvimento
+.idea/
+.vscode/
+*.sublime-*
+*.swp
+
+# Dependências do Cargo
+Cargo.toml.orig
+Cargo.toml.orig.orig
+Cargo.toml.bk
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
