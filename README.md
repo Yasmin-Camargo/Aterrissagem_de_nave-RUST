@@ -1,7 +1,8 @@
 # :flight_arrival: Aterrissagem_de_nave-RUST
 Implementação de um jogo em RUST utilizando GGEZ, desenvolvido como trabalho avaliativo da disciplina de Tópicos Especiais em Computação VIII 
 
-![image](https://github.com/Yasmin-Camargo/Aterrissagem_de_nave-RUST/assets/88253809/b4b0736a-0d5a-4fea-a74b-47f5c440480d)
+![image](https://github.com/Yasmin-Camargo/Aterrissagem_de_nave-RUST/assets/88253809/1297b770-c07c-49d1-a568-f1ed08a4bcad)
+
 
 ## :joystick: Como jogar
 ### Controles da Nave:
@@ -41,10 +42,11 @@ Se nenhum argumento for fornecido, o jogo usará valores padrão.
 O objetivo do jogo é pousar com segurança na área designada, mantendo a nave sob controle e gerenciando o combustível disponível.
 
 #### Vitória
-![image](https://github.com/Yasmin-Camargo/Aterrissagem_de_nave-RUST/assets/88253809/91e3589d-1bb3-4985-94e8-06b9ff4676cf)
+![image](https://github.com/Yasmin-Camargo/Aterrissagem_de_nave-RUST/assets/88253809/c9358deb-9f24-420a-a22c-bf8a355f6c4e)
 
 #### Derrota
-![image](https://github.com/Yasmin-Camargo/Aterrissagem_de_nave-RUST/assets/88253809/4fa6bec9-8836-4ff0-b1da-2d9cfb35ae1f)
+![image](https://github.com/Yasmin-Camargo/Aterrissagem_de_nave-RUST/assets/88253809/1b73e9a5-1047-455f-89b7-00d62b99001e)
+
 
 
 
