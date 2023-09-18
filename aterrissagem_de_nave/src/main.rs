@@ -1,11 +1,12 @@
 // Um jogo com GGEZ: Yasmin Souza Camargo
-use std::env;
-use ggez;                                       // Importa a biblioteca ggez
-use ggez::event;                                // Importa o módulo de eventos da ggez
-use ggez::graphics;                             // Importa o módulo de gráficos da ggez
-use ggez::input::keyboard::{self, KeyCode};     // Importa o módulo de input do teclado
-use ggez::{Context, GameResult};                // Importa tipos e funções básicas da ggez
-use ggez::nalgebra as na;                       // Importa a biblioteca de álgebra linear
+use std::env;                                   // Permite acessar os argumentos de linha de comando passados ao programa
+use ggez;                                       // Fornece funcionalidades essenciais para criar jogos
+use ggez::event;                                // Importa o módulo de eventos da ggez: para atualizações de quadros e eventos de entrada (teclado) 
+use ggez::graphics;                             // Importa o módulo de gráficos da ggez: renderiza elementos visuais na janela do jogo
+use ggez::input::keyboard::{self, KeyCode};     // Importa o módulo de input do teclado: detecta quando teclas específicas são pressionadas 
+use ggez::{Context, GameResult};                // Importa o módulo de tipos e funções básicas da ggez: criar e gerenciar o contexto do jogo
+use ggez::nalgebra as na;                       // Importa o módulo da biblioteca de álgebra linear: manipular vetores e matrizes
+use rand::Rng;                                  // Biblioteca de geração de números aleatórios 
 
 // Constantes para dimensões 
 const LARGURA_NAVE: f32 = 40.0;     // dimensões da nave 
@@ -15,20 +16,20 @@ const ALTURA_ALVO: f32 = 20.0;
 
 // Configurações
 const CONSUMO_COMBUSTIVEL: f32 = 10.0;  // Consumo de combustível por segundo
-const POTENCIA_MOTOR: f32 = 10000.0;    // Fator de aceleração do motor
+const POTENCIA_MOTOR: f32 = 10000.0;    // Aceleração do motor
 const VELOCIDADE_NAVE: f32 = 200.0;     // Velocidade de movimento lateral da nave
-const VELOCIDADE_PERMITIDA_PARA_POUSAR: f32 = 20.0;
+const VELOCIDADE_PERMITIDA_PARA_POUSAR: f32 = 20.0; // Para ganhar jogo velocidade deve estar abaixo desse valor
 
 // Estrutura para armazenar o estado do jogo
 struct EstadoJogo {
     combustivel: f32,
     gravidade: f32,
     peso_nave: f32,
-    colidiu: bool,
-    pousou: bool,
     velocidade_nave: na::Vector2<f32>,
     posicao_nave: na::Point2<f32>,
     posicao_alvo: na::Point2<f32>,
+    colidiu: bool,
+    pousou: bool,
 }
 
 impl EstadoJogo {
@@ -37,12 +38,12 @@ impl EstadoJogo {
         // Calcula as posições iniciais da nave e do alvo com base no tamanho da tela
         let largura_tela = graphics::drawable_size(ctx).0;
         let altura_tela = graphics::drawable_size(ctx).1;
-        let inicio_x_nave = largura_tela * 0.5;
+        let inicio_x_nave = rand::thread_rng().gen_range(0.0..largura_tela);    // nave inicia em uma posição x aleatória
         let inicio_x_alvo = largura_tela * 0.5;
         let inicio_y_alvo = altura_tela - ALTURA_ALVO * 0.5 - 20.0;
 
         Ok(EstadoJogo {
-            combustivel: combustivel_parametro,
+            combustivel: combustivel_parametro,    
             gravidade: gravidade_parametro,
             peso_nave: peso_nave_parametro,
             colidiu: false,
@@ -225,9 +226,12 @@ fn main() -> GameResult {
             }
         };
     }
+
+    println!("\nPara ganhar o jogo faça a aterrissagem com até {} de velocidade\n", VELOCIDADE_PERMITIDA_PARA_POUSAR);
+
     let cb = ggez::ContextBuilder::new("trabalho_TECVII", "Yasmin");    // Cria um novo construtor 
     let (mut ctx, mut event_loop) = cb.build()?;       // Constrói o contexto e o loop de eventos
-    graphics::set_window_title(&ctx, "trabalho_TECVII");     // Define o título da janela do jogo
+    graphics::set_window_title(&ctx, "aterrissagem de nave");     // Define o título da janela do jogo
     let mut estado = EstadoJogo::novo(&mut ctx, combustivel, peso_nave, gravidade)?;  // Cria um novo estado de jogo
     event::run(&mut ctx, &mut event_loop, &mut estado)   // Inicia o loop de eventos do jogo
 }
