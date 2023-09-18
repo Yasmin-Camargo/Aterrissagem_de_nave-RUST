@@ -14,22 +14,22 @@ Implementação de um jogo em RUST utilizando GGEZ, desenvolvido como trabalho a
 - Manter a velocidade da nave abaixo do limite especificado para ganhar o jogo.
 
 ### Combustível:
-- Seu combustível é limitado. Cada vez que você acelera o motor, consome combustível.
-- Monitore o nível de combustível exibido na tela. Sem combustível, você não poderá controlar a nave.
+- O combustível é limitado. Cada vez que o motor é acelerado, consome combustível.
+- Nível de combustível é exibido na tela. Sem combustível, não é possível controlar a nave.
 
 ### Pousar com Sucesso:
-- Para vencer o jogo, você deve pousar na área designada com uma velocidade inferior ao limite crítico.
+- Para vencer o jogo, deve-se pousar na área designada com uma velocidade inferior ao limite crítico.
 
 ### Perda de Jogo:
-- Você perde o jogo se colidir com o chão, as laterais da tela ou pousar com uma velocidade acima do limite crítico.
+- O jogo é perdido se colidir com o chão, as laterais da tela ou pousar com uma velocidade acima do limite crítico.
 
 ### Customização (Opcional):
-- Você pode personalizar o jogo fornecendo argumentos na linha de comando, como combustível, peso da nave e gravidade. Consulte "Executando o Jogo" para detalhes.
+- É possível personalizar o jogo fornecendo argumentos na linha de comando, como combustível, peso da nave e gravidade. Consulte "Executando o Jogo" para detalhes.
 
 ## :play_or_pause_button: Executando o Jogo
 Para executar o jogo com valores personalizados (opcional):
 
-cargo run <combustivel> <peso_nave> <gravidade>
+**cargo run < combustivel > < peso_nave > < gravidade >**
 
 - < combustivel >: Quantidade de combustível disponível para a nave (float)
 - < peso_nave >: Peso da nave espacial (float)
